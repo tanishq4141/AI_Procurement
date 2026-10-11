@@ -1,0 +1,205 @@
+[
+  {
+    "id": "CAT-001",
+    "name": "Jira Software",
+    "category": "Project Management",
+    "vendor": "Atlassian",
+    "active_seats": 250,
+    "total_seats": 300,
+    "renewal_date": "2027-03-31",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "task management",
+      "sprint planning",
+      "agile",
+      "bug tracking",
+      "issue tracking",
+      "kanban",
+      "project management",
+      "backlog grooming",
+      "roadmap"
+    ],
+    "cost_per_seat_annual": 180,
+    "department_owner": "Engineering"
+  },
+  {
+    "id": "CAT-002",
+    "name": "Slack Enterprise",
+    "category": "Communication",
+    "vendor": "Salesforce / Slack",
+    "active_seats": 480,
+    "total_seats": 500,
+    "renewal_date": "2027-01-15",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "team chat",
+      "instant messaging",
+      "channels",
+      "voice calls",
+      "huddles",
+      "messaging"
+    ],
+    "cost_per_seat_annual": 150,
+    "department_owner": "People / HR"
+  },
+  {
+    "id": "CAT-003",
+    "name": "GitHub Enterprise Cloud",
+    "category": "Developer Tools",
+    "vendor": "GitHub / Microsoft",
+    "active_seats": 140,
+    "total_seats": 150,
+    "renewal_date": "2027-06-30",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "git repository",
+      "ci/cd",
+      "code review",
+      "pull requests",
+      "version control",
+      "github actions",
+      "devops"
+    ],
+    "cost_per_seat_annual": 250,
+    "department_owner": "Engineering"
+  },
+  {
+    "id": "CAT-004",
+    "name": "Figma Enterprise",
+    "category": "Design & Prototyping",
+    "vendor": "Figma",
+    "active_seats": 35,
+    "total_seats": 40,
+    "renewal_date": "2027-04-01",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "ui design",
+      "ux design",
+      "wireframing",
+      "mockups",
+      "prototyping",
+      "design system",
+      "whiteboard",
+      "figjam"
+    ],
+    "cost_per_seat_annual": 540,
+    "department_owner": "Product"
+  },
+  {
+    "id": "CAT-005",
+    "name": "Salesforce Sales Cloud",
+    "category": "CRM & Sales",
+    "vendor": "Salesforce",
+    "active_seats": 75,
+    "total_seats": 80,
+    "renewal_date": "2027-02-28",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "customer relationship management",
+      "leads",
+      "sales pipeline",
+      "pipeline tracking",
+      "opportunity management",
+      "account tracking"
+    ],
+    "cost_per_seat_annual": 1200,
+    "department_owner": "Sales"
+  },
+  {
+    "id": "CAT-006",
+    "name": "Datadog",
+    "category": "Observability",
+    "vendor": "Datadog Inc.",
+    "active_seats": 50,
+    "total_seats": 60,
+    "renewal_date": "2027-05-15",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "apm",
+      "log management",
+      "metrics",
+      "infrastructure monitoring",
+      "application monitoring",
+      "alerts"
+    ],
+    "cost_per_seat_annual": 800,
+    "department_owner": "Engineering"
+  },
+  {
+    "id": "CAT-007",
+    "name": "Notion Enterprise",
+    "category": "Knowledge Base & Docs",
+    "vendor": "Notion Labs",
+    "active_seats": 280,
+    "total_seats": 300,
+    "renewal_date": "2027-08-01",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "wiki",
+      "documentation",
+      "notes",
+      "knowledge base",
+      "internal documentation",
+      "workspace"
+    ],
+    "cost_per_seat_annual": 120,
+    "department_owner": "Product"
+  },
+  {
+    "id": "CAT-008",
+    "name": "Zoom Meetings Pro",
+    "category": "Video Conferencing",
+    "vendor": "Zoom Video Communications",
+    "active_seats": 450,
+    "total_seats": 500,
+    "renewal_date": "2026-12-31",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "video meetings",
+      "webinars",
+      "screen sharing",
+      "video conferencing",
+      "virtual meetings"
+    ],
+    "cost_per_seat_annual": 180,
+    "department_owner": "People / HR"
+  },
+  {
+    "id": "CAT-009",
+    "name": "1Password Business",
+    "category": "Security & Identity",
+    "vendor": "1Password / AgileBits",
+    "active_seats": 420,
+    "total_seats": 500,
+    "renewal_date": "2027-09-30",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "password manager",
+      "vault",
+      "secrets management",
+      "credential sharing",
+      "two factor authentication"
+    ],
+    "cost_per_seat_annual": 96,
+    "department_owner": "IT Security"
+  },
+  {
+    "id": "CAT-010",
+    "name": "Tableau Server",
+    "category": "Business Intelligence",
+    "vendor": "Salesforce / Tableau",
+    "active_seats": 42,
+    "total_seats": 50,
+    "renewal_date": "2027-07-15",
+    "contract_status": "ACTIVE",
+    "capabilities": [
+      "dashboards",
+      "data visualization",
+      "reporting",
+      "bi analytics",
+      "business intelligence"
+    ],
+    "cost_per_seat_annual": 840,
+    "department_owner": "Data & Analytics"
+  }
+]

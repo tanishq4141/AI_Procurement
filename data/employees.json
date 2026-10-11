@@ -1,0 +1,66 @@
+[
+  {
+    "id": "EMP-101",
+    "name": "Tanu Sharma",
+    "email": "tanu.sharma@company.internal",
+    "department": "Engineering",
+    "role": "Staff Software Engineer",
+    "manager_email": "marcus.vance@company.internal"
+  },
+  {
+    "id": "EMP-102",
+    "name": "Alice Smith",
+    "email": "alice.smith@company.internal",
+    "department": "Marketing",
+    "role": "Growth Marketing Lead",
+    "manager_email": "rachel.green@company.internal"
+  },
+  {
+    "id": "EMP-103",
+    "name": "Bob Chen",
+    "email": "bob.chen@company.internal",
+    "department": "Sales",
+    "role": "Senior Account Executive",
+    "manager_email": "sarah.connor@company.internal"
+  },
+  {
+    "id": "EMP-104",
+    "name": "David Kim",
+    "email": "david.kim@company.internal",
+    "department": "Product",
+    "role": "Principal Product Manager",
+    "manager_email": "elena.rostova@company.internal"
+  },
+  {
+    "id": "EMP-105",
+    "name": "Elena Rostova",
+    "email": "elena.rostova@company.internal",
+    "department": "Product",
+    "role": "VP of Product",
+    "manager_email": "ceo@company.internal"
+  },
+  {
+    "id": "EMP-106",
+    "name": "Priya Patel",
+    "email": "priya.patel@company.internal",
+    "department": "Data & Analytics",
+    "role": "Lead Data Scientist",
+    "manager_email": "devon.miles@company.internal"
+  },
+  {
+    "id": "EMP-107",
+    "name": "Carlos Gomez",
+    "email": "carlos.gomez@company.internal",
+    "department": "People / HR",
+    "role": "People Ops Specialist",
+    "manager_email": "claire.dunphy@company.internal"
+  },
+  {
+    "id": "EMP-108",
+    "name": "Jordan Lee",
+    "email": "jordan.lee@company.internal",
+    "department": "Finance",
+    "role": "Financial Analyst",
+    "manager_email": "vp.finance@company.internal"
+  }
+]

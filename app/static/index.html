@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Procurement Request Copilot | Dual-Architecture Evaluation</title>
+  <meta name="description" content="Enterprise human-in-the-loop decision-support tool comparing Single-Agent vs Staged Two-Agent procurement copilot architectures.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>ProcureAI Copilot</h1>
+          <span class="subtitle">Human-in-the-Loop Architecture Decision Platform</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Mock Outage Toggle -->
+        <button id="outageToggleBtn" class="pill-btn outage-btn" title="Simulate 500 Outage on Mock Security API">
+          <span class="status-dot green" id="outageDot"></span>
+          <span id="outageText">Mock Vendor API: Online</span>
+        </button>
+
+        <!-- Benchmark Results Trigger -->
+        <button id="openBenchmarkBtn" class="pill-btn benchmark-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 20V10M12 20V4M6 20v-6"/>
+          </svg>
+          Benchmark Matrix (20 Cases)
+        </button>
+
+        <!-- Decision Log Trigger -->
+        <button id="openAuditBtn" class="pill-btn audit-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Audit Trail (<span id="auditCount">0</span>)
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace: Dual Pane Layout -->
+    <main class="workspace-grid">
+      <!-- LEFT PANE: Request Details & Architecture Selector -->
+      <section class="pane left-pane" aria-labelledby="left-pane-heading">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="step-badge">1</span>
+            <h2 id="left-pane-heading">Request Configuration</h2>
+          </div>
+          <!-- Preset Selector -->
+          <div class="preset-dropdown-container">
+            <label for="presetSelect" class="sr-only">Load Test Scenario</label>
+            <select id="presetSelect" class="preset-select">
+              <option value="" disabled selected>⚡ Load Preset Test Case...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Architecture Switcher -->
+        <div class="arch-selector-card">
+          <div class="arch-selector-label">
+            <span>Execution Pipeline</span>
+            <span class="info-tag">Dual Architecture</span>
+          </div>
+          <div class="arch-toggle-group">
+            <label class="arch-option" id="archAOption">
+              <input type="radio" name="architecture" value="ARCHITECTURE_A" checked>
+              <div class="arch-card-content">
+                <div class="arch-title">
+                  <span class="arch-badge a">Arch A</span>
+                  <strong>Single-Agent Baseline</strong>
+                </div>
+                <p>Monolithic agent with direct tool execution loop. Lower latency, higher prompt surface.</p>
+              </div>
+            </label>
+
+            <label class="arch-option" id="archBOption">
+              <input type="radio" name="architecture" value="ARCHITECTURE_B">
+              <div class="arch-card-content">
+                <div class="arch-title">
+                  <span class="arch-badge b">Arch B</span>
+                  <strong>Staged Two-Agent</strong>
+                </div>
+                <p>Analyst Agent gathers facts → Policy Agent judges. Zero reasoning pollution.</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <form id="procurementForm" class="request-form">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="employeeName">Employee Name</label>
+              <input type="text" id="employeeName" name="employeeName" placeholder="e.g. Tanu Sharma" required value="Tanu Sharma">
+            </div>
+            <div class="form-group">
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
+                <option value="Engineering">Engineering (Budget: $25k)</option>
+                <option value="Marketing">Marketing (Budget: $1.5k)</option>
+                <option value="Sales">Sales (Budget: $6k)</option>
+                <option value="Product">Product (Budget: $20k)</option>
+                <option value="Data & Analytics">Data & Analytics (Budget: $20k)</option>
+                <option value="People / HR">People / HR (Budget: $18k)</option>
+                <option value="Finance">Finance (Budget: $30k)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="toolName">Requested Tool / Service</label>
+              <input type="text" id="toolName" name="toolName" placeholder="e.g. Postman Pro, Asana, Linear" required value="Postman Pro">
+            </div>
+            <div class="form-group">
+              <label for="vendorName">Vendor Entity</label>
+              <input type="text" id="vendorName" name="vendorName" placeholder="e.g. Atlassian, ShadowAI" value="Atlassian">
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="estimatedCost">Estimated Total Cost ($ USD)</label>
+              <input type="number" id="estimatedCost" name="estimatedCost" step="0.01" min="0" placeholder="e.g. 2400.00" value="2400.00">
+            </div>
+            <div class="form-group">
+              <label for="seatCount">Number of Seats / Licenses</label>
+              <input type="number" id="seatCount" name="seatCount" min="1" placeholder="e.g. 10" value="10">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="vendorUrl">Vendor URL / Security Portal</label>
+            <input type="url" id="vendorUrl" name="vendorUrl" placeholder="https://vendor.com" value="https://postman.com">
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="handlesCustomerData" name="handlesCustomerData">
+              <span class="checkmark"></span>
+              <span class="checkbox-label">
+                <strong>Accesses Production or Customer Data (PII)</strong>
+                <small>Requires mandatory IT Security vetting and privacy sign-off</small>
+              </span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <div class="label-with-tip">
+              <label for="justification">Business Justification & Use Case</label>
+              <span class="field-hint">Supports prompt injection edge-case testing</span>
+            </div>
+            <textarea id="justification" name="justification" rows="4" placeholder="Detail the business requirements, intended workflow, and reason for new procurement...">API testing and mock server automation for backend microservices.</textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="form-actions">
+            <button type="submit" id="analyzeBtn" class="btn btn-primary">
+              <span class="btn-spinner hidden" id="analyzeSpinner"></span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Run AI Copilot Analysis</span>
+            </button>
+
+            <button type="button" id="compareBothBtn" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="9" height="18" rx="2"/>
+                <rect x="13" y="3" width="9" height="18" rx="2"/>
+              </svg>
+              <span>Compare Both (A vs B)</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- RIGHT PANE: Evidence Pack & Recommendation Panel -->
+      <section class="pane right-pane" aria-labelledby="right-pane-heading">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <span class="step-badge">2</span>
+            <h2 id="right-pane-heading">Evidence & Recommendation</h2>
+          </div>
+          <div class="runtime-meta" id="runtimeMeta">
+            <span class="meta-item" id="metaArchBadge">Arch A</span>
+            <span class="meta-item" id="metaLatency">0.00s</span>
+            <span class="meta-item" id="metaTokens">0 tokens</span>
+          </div>
+        </div>
+
+        <div class="results-viewport" id="resultsViewport">
+          <!-- Initial Empty State -->
+          <div class="empty-state" id="emptyState">
+            <div class="empty-state-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3>No Request Evaluated Yet</h3>
+            <p>Select a preset test scenario or enter request details on the left, then click <strong>Run AI Copilot Analysis</strong>.</p>
+          </div>
+
+          <!-- Dynamic Results Container -->
+          <div class="results-content hidden" id="resultsContent">
+            <!-- Recommendation Badge & Banner -->
+            <div class="rec-banner" id="recBanner">
+              <div class="rec-badge-group">
+                <span class="rec-status-tag" id="recStatusTag">APPROVE</span>
+                <span class="rec-tier-tag" id="recTierTag">Tier 1 (<$5k)</span>
+              </div>
+              <p class="rec-next-step" id="recNextStep">Route to DIRECT_MANAGER for standard procurement sign-off.</p>
+            </div>
+
+            <!-- Approvals Required -->
+            <div class="section-card">
+              <div class="card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="8.5" cy="7.5" r="4"/>
+                  <polyline points="17 11 19 13 23 9"/>
+                </svg>
+                Mandatory Approvals Required
+              </div>
+              <div class="chips-container" id="approvalsList">
+                <!-- Dynamically filled with chips -->
+              </div>
+            </div>
+
+            <!-- Risk Flags & Alerts (if any) -->
+            <div class="section-card" id="riskSection">
+              <div class="card-title text-warning">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Risk Flags & Compliance Triggers
+              </div>
+              <ul class="risk-flags-list" id="riskFlagsList">
+                <!-- Dynamically rendered -->
+              </ul>
+            </div>
+
+            <!-- Missing Fields (if any) -->
+            <div class="section-card hidden" id="missingSection">
+              <div class="card-title text-danger">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                Missing Mandatory Parameters
+              </div>
+              <div class="missing-items-chips" id="missingFieldsList"></div>
+            </div>
+
+            <!-- Structured Evidence Pack -->
+            <div class="section-card">
+              <div class="card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+                Structured Evidence Pack (Deterministic Grounding)
+              </div>
+              <div class="evidence-grid" id="evidenceGrid">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+            <!-- Tool Execution Traces -->
+            <div class="section-card">
+              <div class="card-title-collapsible" id="toggleTracesBtn">
+                <div class="title-left">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 17 10 11 4 5"/>
+                    <line x1="12" y1="19" x2="20" y2="19"/>
+                  </svg>
+                  <span>Deterministic Tool Execution Traces (<span id="traceCount">4</span>)</span>
+                </div>
+                <span class="chevron" id="traceChevron">▼</span>
+              </div>
+              <div class="traces-container" id="tracesContainer">
+                <!-- Dynamically rendered tool calls -->
+              </div>
+            </div>
+
+            <!-- Human Reviewer Decision Controls -->
+            <div class="section-card human-actions-card">
+              <div class="card-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                Human Reviewer Decision Controls
+              </div>
+              <p class="section-desc">Record human-in-the-loop audit determination based on the evidence pack above.</p>
+              
+              <div class="human-buttons-row">
+                <button type="button" class="btn-action btn-approve" data-action="APPROVE">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  Approve Request
+                </button>
+                <button type="button" class="btn-action btn-escalate" data-action="ESCALATE">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  Escalate (Finance / Security)
+                </button>
+                <button type="button" class="btn-action btn-more-info" data-action="REQUEST_MORE_INFO">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Request More Info
+                </button>
+                <button type="button" class="btn-action btn-reject" data-action="REJECT">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  Reject Request
+                </button>
+              </div>
+
+              <div class="reviewer-notes-box">
+                <label for="reviewerNotes">Reviewer Audit Notes</label>
+                <input type="text" id="reviewerNotes" placeholder="Optional notes for compliance and procurement audit log...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Side-by-Side Comparison Modal -->
+    <div class="modal-backdrop hidden" id="compareModal">
+      <div class="modal-window compare-modal-window">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="9" height="18" rx="2"/>
+              <rect x="13" y="3" width="9" height="18" rx="2"/>
+            </svg>
+            <h3>Live Dual-Architecture Side-by-Side Comparison</h3>
+          </div>
+          <button class="modal-close-btn" id="closeCompareModal">&times;</button>
+        </div>
+        <div class="modal-body" id="compareModalBody">
+          <!-- Comparison cards rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Benchmark Evaluation Modal -->
+    <div class="modal-backdrop hidden" id="benchmarkModal">
+      <div class="modal-window benchmark-modal-window">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 20V10M12 20V4M6 20v-6"/>
+            </svg>
+            <h3>Architecture Benchmark Evaluation Matrix (20 Test Cases)</h3>
+          </div>
+          <div class="modal-header-actions">
+            <button id="rerunBenchmarkBtn" class="pill-btn primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+              Re-run 20 Cases
+            </button>
+            <button class="modal-close-btn" id="closeBenchmarkModal">&times;</button>
+          </div>
+        </div>
+        <div class="modal-body" id="benchmarkModalBody">
+          <!-- Benchmark summary and per-case matrix rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Audit Trail Modal -->
+    <div class="modal-backdrop hidden" id="auditModal">
+      <div class="modal-window audit-modal-window">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <h3>Human-in-the-Loop Audit Trail</h3>
+          </div>
+          <button class="modal-close-btn" id="closeAuditModal">&times;</button>
+        </div>
+        <div class="modal-body" id="auditModalBody">
+          <!-- Audit records rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

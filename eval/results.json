@@ -1,0 +1,472 @@
+{
+  "timestamp": 1792172540.397068,
+  "total_test_cases": 20,
+  "summary": {
+    "architecture_a": {
+      "total_cases": 20,
+      "recommendation_accuracy_pct": 100.0,
+      "evidence_grounding_pct": 100.0,
+      "policy_compliance_pct": 100.0,
+      "avg_tool_calls": 3.2,
+      "avg_latency_sec": 0.0388,
+      "avg_tokens": 646.2,
+      "total_token_cost_usd": 0.002174
+    },
+    "architecture_b": {
+      "total_cases": 20,
+      "recommendation_accuracy_pct": 100.0,
+      "evidence_grounding_pct": 100.0,
+      "policy_compliance_pct": 100.0,
+      "avg_tool_calls": 3.2,
+      "avg_latency_sec": 0.0823,
+      "avg_tokens": 491.4,
+      "total_token_cost_usd": 0.002159
+    }
+  },
+  "details": {
+    "cases_arch_a": [
+      {
+        "case_id": "TC-001",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04582,
+        "total_tokens": 716,
+        "token_cost_usd": 0.000113
+      },
+      {
+        "case_id": "TC-002",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04325,
+        "total_tokens": 725,
+        "token_cost_usd": 0.000115
+      },
+      {
+        "case_id": "TC-003",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.045649999999999996,
+        "total_tokens": 722,
+        "token_cost_usd": 0.000114
+      },
+      {
+        "case_id": "TC-004",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 1e-05,
+        "total_tokens": 230,
+        "token_cost_usd": 7e-05
+      },
+      {
+        "case_id": "TC-005",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 1e-05,
+        "total_tokens": 230,
+        "token_cost_usd": 7e-05
+      },
+      {
+        "case_id": "TC-006",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 1e-05,
+        "total_tokens": 230,
+        "token_cost_usd": 7e-05
+      },
+      {
+        "case_id": "TC-007",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 0.0,
+        "total_tokens": 230,
+        "token_cost_usd": 7e-05
+      },
+      {
+        "case_id": "TC-008",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04285,
+        "total_tokens": 753,
+        "token_cost_usd": 0.000119
+      },
+      {
+        "case_id": "TC-009",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04632,
+        "total_tokens": 750,
+        "token_cost_usd": 0.000118
+      },
+      {
+        "case_id": "TC-010",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04356,
+        "total_tokens": 741,
+        "token_cost_usd": 0.000117
+      },
+      {
+        "case_id": "TC-011",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.045829999999999996,
+        "total_tokens": 742,
+        "token_cost_usd": 0.000117
+      },
+      {
+        "case_id": "TC-012",
+        "category": "budget_exceeded",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.047119999999999995,
+        "total_tokens": 735,
+        "token_cost_usd": 0.000116
+      },
+      {
+        "case_id": "TC-013",
+        "category": "budget_exceeded",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.0428,
+        "total_tokens": 739,
+        "token_cost_usd": 0.000117
+      },
+      {
+        "case_id": "TC-014",
+        "category": "vendor_security_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04664,
+        "total_tokens": 759,
+        "token_cost_usd": 0.00012
+      },
+      {
+        "case_id": "TC-015",
+        "category": "vendor_security_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.046200000000000005,
+        "total_tokens": 763,
+        "token_cost_usd": 0.00012
+      },
+      {
+        "case_id": "TC-016",
+        "category": "policy_governance",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04494,
+        "total_tokens": 738,
+        "token_cost_usd": 0.000117
+      },
+      {
+        "case_id": "TC-017",
+        "category": "prompt_injection",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04453,
+        "total_tokens": 833,
+        "token_cost_usd": 0.000131
+      },
+      {
+        "case_id": "TC-018",
+        "category": "prompt_injection",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04541,
+        "total_tokens": 764,
+        "token_cost_usd": 0.00012
+      },
+      {
+        "case_id": "TC-019",
+        "category": "service_outage",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.09941,
+        "total_tokens": 716,
+        "token_cost_usd": 0.000113
+      },
+      {
+        "case_id": "TC-020",
+        "category": "multi_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.04629,
+        "total_tokens": 808,
+        "token_cost_usd": 0.000127
+      }
+    ],
+    "cases_arch_b": [
+      {
+        "case_id": "TC-001",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08887,
+        "total_tokens": 495,
+        "token_cost_usd": 0.000104
+      },
+      {
+        "case_id": "TC-002",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08769,
+        "total_tokens": 506,
+        "token_cost_usd": 0.000106
+      },
+      {
+        "case_id": "TC-003",
+        "category": "standard_approval",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08685999999999999,
+        "total_tokens": 503,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-004",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 0.045270000000000005,
+        "total_tokens": 440,
+        "token_cost_usd": 0.00012
+      },
+      {
+        "case_id": "TC-005",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 0.045259999999999995,
+        "total_tokens": 431,
+        "token_cost_usd": 0.000115
+      },
+      {
+        "case_id": "TC-006",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 0.04046,
+        "total_tokens": 429,
+        "token_cost_usd": 0.000115
+      },
+      {
+        "case_id": "TC-007",
+        "category": "incomplete_request",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 0,
+        "latency_sec": 0.04466,
+        "total_tokens": 444,
+        "token_cost_usd": 0.000121
+      },
+      {
+        "case_id": "TC-008",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.09051999999999999,
+        "total_tokens": 502,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-009",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08903,
+        "total_tokens": 500,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-010",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.09158,
+        "total_tokens": 498,
+        "token_cost_usd": 0.000104
+      },
+      {
+        "case_id": "TC-011",
+        "category": "duplicate_software",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08968999999999999,
+        "total_tokens": 504,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-012",
+        "category": "budget_exceeded",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08621,
+        "total_tokens": 496,
+        "token_cost_usd": 0.000104
+      },
+      {
+        "case_id": "TC-013",
+        "category": "budget_exceeded",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08642,
+        "total_tokens": 502,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-014",
+        "category": "vendor_security_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08859,
+        "total_tokens": 518,
+        "token_cost_usd": 0.000107
+      },
+      {
+        "case_id": "TC-015",
+        "category": "vendor_security_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.09095,
+        "total_tokens": 520,
+        "token_cost_usd": 0.000108
+      },
+      {
+        "case_id": "TC-016",
+        "category": "policy_governance",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08993000000000001,
+        "total_tokens": 501,
+        "token_cost_usd": 0.000105
+      },
+      {
+        "case_id": "TC-017",
+        "category": "prompt_injection",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08710999999999999,
+        "total_tokens": 512,
+        "token_cost_usd": 0.000107
+      },
+      {
+        "case_id": "TC-018",
+        "category": "prompt_injection",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.08552,
+        "total_tokens": 496,
+        "token_cost_usd": 0.000104
+      },
+      {
+        "case_id": "TC-019",
+        "category": "service_outage",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.13932,
+        "total_tokens": 509,
+        "token_cost_usd": 0.000106
+      },
+      {
+        "case_id": "TC-020",
+        "category": "multi_risk",
+        "rec_match": true,
+        "grounding_score": 100.0,
+        "policy_compliant": true,
+        "tool_calls_count": 4,
+        "latency_sec": 0.09201999999999999,
+        "total_tokens": 521,
+        "token_cost_usd": 0.000108
+      }
+    ]
+  }
+}

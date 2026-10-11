@@ -1,0 +1,47 @@
+{
+  "policy_name": "Enterprise AI Procurement Governance Policy v2.4",
+  "approval_tiers": [
+    {
+      "tier": "TIER_1",
+      "name": "Standard Departmental Purchase",
+      "min_amount": 0.0,
+      "max_amount": 4999.99,
+      "required_approvals": ["DIRECT_MANAGER"],
+      "description": "Requires direct manager approval only, provided budget is available and vendor passes security."
+    },
+    {
+      "tier": "TIER_2",
+      "name": "Department Head Sign-off",
+      "min_amount": 5000.0,
+      "max_amount": 25000.0,
+      "required_approvals": ["DIRECT_MANAGER", "DEPT_HEAD"],
+      "description": "Requires direct manager and department head sign-off."
+    },
+    {
+      "tier": "TIER_3",
+      "name": "Executive & VP Finance Review",
+      "min_amount": 25000.01,
+      "max_amount": 10000000.0,
+      "required_approvals": ["DIRECT_MANAGER", "DEPT_HEAD", "FINANCE_VP"],
+      "description": "High value purchase requiring VP Finance and Executive review."
+    }
+  ],
+  "security_triggers": {
+    "required_approvals": ["IT_SECURITY"],
+    "conditions": [
+      "SOC2_CERTIFICATION_MISSING_OR_EXPIRED",
+      "GDPR_NON_COMPLIANT_WITH_EU_DATA",
+      "RISK_TIER_HIGH_OR_CRITICAL",
+      "INTEGRATES_WITH_PRODUCTION_OR_PII",
+      "VENDOR_NOT_APPROVED"
+    ]
+  },
+  "budget_triggers": {
+    "required_approvals": ["FINANCE_VP"],
+    "action_on_exceeded": "ESCALATE_FOR_REVIEW"
+  },
+  "duplicate_software_policy": {
+    "action": "ESCALATE_FOR_REVIEW",
+    "description": "Active internal software licenses with identical or overlapping capabilities must be evaluated before procuring new licenses."
+  }
+}
